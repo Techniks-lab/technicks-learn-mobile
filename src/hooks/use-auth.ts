@@ -236,6 +236,30 @@ export function useAuth() {
 
   const clearAuth = useCallback(() => clearSession(), [clearSession]);
 
+  const updateProfileMutation = useMutation({
+    mutationFn: (input: { fullName?: string; username?: string }) =>
+      authController
+        .authControllerUpdateProfileV1(input)
+        .then((res) => res.data),
+    onSuccess: (data) => {
+      const result = data as unknown as AuthResponseData;
+      if (result.accessToken && result.refreshToken) {
+        return writeSession(result);
+      }
+      if (result.user) {
+        queryClient.setQueryData<SessionData>(SESSION_KEY, (current) =>
+          current ? { ...current, user: result.user } : current,
+        );
+        void tokenStorage.setUser(result.user);
+      }
+    },
+  });
+  const updateProfile = useCallback(
+    (input: { fullName?: string; username?: string }) =>
+      updateProfileMutation.mutateAsync(input),
+    [updateProfileMutation],
+  );
+
   return {
     status,
     user,
@@ -248,6 +272,7 @@ export function useAuth() {
     resendCode,
     setUsername,
     refreshProfile,
+    updateProfile,
     clearAuth,
   };
 }

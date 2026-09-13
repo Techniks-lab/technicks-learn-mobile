@@ -359,6 +359,17 @@ function AboutTab({ user, onLogout }: { user: AuthUser; onLogout: () => void }) 
 
       <Pressable
         style={[styles.card, styles.menuRow, { backgroundColor: theme.backgroundElement }]}
+        onPress={() => router.push('/edit-profile')}
+      >
+        <Ionicons name="person-outline" size={20} color={Brand.emerald} />
+        <ThemedText type="smallBold" style={styles.menuText}>
+          Edit profile
+        </ThemedText>
+        <Ionicons name="chevron-forward" size={16} color={theme.textSecondary} />
+      </Pressable>
+
+      <Pressable
+        style={[styles.card, styles.menuRow, { backgroundColor: theme.backgroundElement }]}
         onPress={() => router.push('/manage/blogs')}
       >
         <Ionicons name="create-outline" size={20} color={Brand.emerald} />

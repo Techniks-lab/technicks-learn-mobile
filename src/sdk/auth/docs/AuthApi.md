@@ -15,6 +15,7 @@ All URIs are relative to *http://localhost*
 |[**authControllerResendOtpV1**](#authcontrollerresendotpv1) | **POST** /api/v1/auth/resend-otp | Resend the email verification OTP for an unverified account|
 |[**authControllerResetPasswordV1**](#authcontrollerresetpasswordv1) | **POST** /api/v1/auth/reset-password | Reset password using OTP|
 |[**authControllerSetUsernameV1**](#authcontrollersetusernamev1) | **POST** /api/v1/auth/username | Create or change the authenticated user username|
+|[**authControllerUpdateProfileV1**](#authcontrollerupdateprofilev1) | **PATCH** /api/v1/auth/profile | Update the authenticated user profile (name/username)|
 |[**authControllerVerifyEmailV1**](#authcontrollerverifyemailv1) | **POST** /api/v1/auth/verify-email | Verify email with the OTP sent at registration|
 
 # **authControllerChangePasswordV1**
@@ -568,6 +569,59 @@ void (empty response body)
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 |**200** | Username set (created: true) or changed (created: false) |  -  |
+|**401** | Unauthorized |  -  |
+|**409** | Username already taken |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **authControllerUpdateProfileV1**
+> authControllerUpdateProfileV1(updateProfileDto)
+
+
+### Example
+
+```typescript
+import {
+    AuthApi,
+    Configuration,
+    UpdateProfileDto
+} from 'org';
+
+const configuration = new Configuration();
+const apiInstance = new AuthApi(configuration);
+
+let updateProfileDto: UpdateProfileDto; //
+
+const { status, data } = await apiInstance.authControllerUpdateProfileV1(
+    updateProfileDto
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **updateProfileDto** | **UpdateProfileDto**|  | |
+
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[access-token](../README.md#access-token)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: Not defined
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | Profile updated successfully |  -  |
 |**401** | Unauthorized |  -  |
 |**409** | Username already taken |  -  |
 

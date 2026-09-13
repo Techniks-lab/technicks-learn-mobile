@@ -62,6 +62,7 @@ Class | Method | HTTP request | Description
 *AuthApi* | [**authControllerResendOtpV1**](docs/AuthApi.md#authcontrollerresendotpv1) | **POST** /api/v1/auth/resend-otp | Resend the email verification OTP for an unverified account
 *AuthApi* | [**authControllerResetPasswordV1**](docs/AuthApi.md#authcontrollerresetpasswordv1) | **POST** /api/v1/auth/reset-password | Reset password using OTP
 *AuthApi* | [**authControllerSetUsernameV1**](docs/AuthApi.md#authcontrollersetusernamev1) | **POST** /api/v1/auth/username | Create or change the authenticated user username
+*AuthApi* | [**authControllerUpdateProfileV1**](docs/AuthApi.md#authcontrollerupdateprofilev1) | **PATCH** /api/v1/auth/profile | Update the authenticated user profile (name/username)
 *AuthApi* | [**authControllerVerifyEmailV1**](docs/AuthApi.md#authcontrollerverifyemailv1) | **POST** /api/v1/auth/verify-email | Verify email with the OTP sent at registration
 
 
@@ -69,12 +70,25 @@ Class | Method | HTTP request | Description
 
  - [AuthControllerRefreshV1Request](docs/AuthControllerRefreshV1Request.md)
  - [ChangePasswordDto](docs/ChangePasswordDto.md)
+ - [CourseCheckInDto](docs/CourseCheckInDto.md)
+ - [CreateCategoryDto](docs/CreateCategoryDto.md)
+ - [CreateCommentDto](docs/CreateCommentDto.md)
+ - [CreateCourseCategoryDto](docs/CreateCourseCategoryDto.md)
+ - [CreateCourseDto](docs/CreateCourseDto.md)
+ - [CreateLessonBlockDto](docs/CreateLessonBlockDto.md)
+ - [CreateLessonDto](docs/CreateLessonDto.md)
+ - [CreatePostDto](docs/CreatePostDto.md)
  - [ForgotPasswordDto](docs/ForgotPasswordDto.md)
  - [LoginDto](docs/LoginDto.md)
  - [RegisterDto](docs/RegisterDto.md)
  - [ResendOtpDto](docs/ResendOtpDto.md)
  - [ResetPasswordDto](docs/ResetPasswordDto.md)
  - [SetUsernameDto](docs/SetUsernameDto.md)
+ - [UpdateCategoryDto](docs/UpdateCategoryDto.md)
+ - [UpdateCourseDto](docs/UpdateCourseDto.md)
+ - [UpdateLessonDto](docs/UpdateLessonDto.md)
+ - [UpdatePostDto](docs/UpdatePostDto.md)
+ - [UpdateProfileDto](docs/UpdateProfileDto.md)
  - [VerifyEmailDto](docs/VerifyEmailDto.md)
 
 

@@ -58,6 +58,301 @@ export interface ChangePasswordDto {
 /**
  * 
  * @export
+ * @interface CourseCheckInDto
+ */
+export interface CourseCheckInDto {
+    /**
+     * Local calendar date as YYYY-MM-DD. Defaults to server date.
+     * @type {string}
+     * @memberof CourseCheckInDto
+     */
+    'date'?: string;
+}
+/**
+ * 
+ * @export
+ * @interface CreateCategoryDto
+ */
+export interface CreateCategoryDto {
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateCategoryDto
+     */
+    'name': string;
+    /**
+     * Optional. Auto-generated from name if omitted.
+     * @type {string}
+     * @memberof CreateCategoryDto
+     */
+    'slug'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateCategoryDto
+     */
+    'description'?: string;
+}
+/**
+ * 
+ * @export
+ * @interface CreateCommentDto
+ */
+export interface CreateCommentDto {
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateCommentDto
+     */
+    'body': string;
+    /**
+     * Parent comment ID for nested replies
+     * @type {string}
+     * @memberof CreateCommentDto
+     */
+    'parentId'?: string;
+}
+/**
+ * 
+ * @export
+ * @interface CreateCourseCategoryDto
+ */
+export interface CreateCourseCategoryDto {
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateCourseCategoryDto
+     */
+    'name': string;
+    /**
+     * Optional. Auto-generated from name if omitted.
+     * @type {string}
+     * @memberof CreateCourseCategoryDto
+     */
+    'slug'?: string;
+}
+/**
+ * 
+ * @export
+ * @interface CreateCourseDto
+ */
+export interface CreateCourseDto {
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateCourseDto
+     */
+    'title': string;
+    /**
+     * URL slug; defaults to a slugified title
+     * @type {string}
+     * @memberof CreateCourseDto
+     */
+    'slug'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateCourseDto
+     */
+    'description'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateCourseDto
+     */
+    'coverImage'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateCourseDto
+     */
+    'status'?: CreateCourseDtoStatusEnum;
+    /**
+     * 
+     * @type {number}
+     * @memberof CreateCourseDto
+     */
+    'sortOrder'?: number;
+    /**
+     * CourseCategory id to assign; null clears it
+     * @type {string}
+     * @memberof CreateCourseDto
+     */
+    'categoryId'?: string;
+}
+
+export const CreateCourseDtoStatusEnum = {
+    Draft: 'DRAFT',
+    Published: 'PUBLISHED'
+} as const;
+
+export type CreateCourseDtoStatusEnum = typeof CreateCourseDtoStatusEnum[keyof typeof CreateCourseDtoStatusEnum];
+
+/**
+ * 
+ * @export
+ * @interface CreateLessonBlockDto
+ */
+export interface CreateLessonBlockDto {
+    /**
+     * Order of the block inside the lesson
+     * @type {number}
+     * @memberof CreateLessonBlockDto
+     */
+    'blockIndex'?: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateLessonBlockDto
+     */
+    'kind': CreateLessonBlockDtoKindEnum;
+    /**
+     * Markdown/plain content for HEADING and TEXT blocks
+     * @type {string}
+     * @memberof CreateLessonBlockDto
+     */
+    'text'?: string;
+    /**
+     * Remote URL for IMAGE and VIDEO blocks
+     * @type {string}
+     * @memberof CreateLessonBlockDto
+     */
+    'url'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateLessonBlockDto
+     */
+    'caption'?: string;
+}
+
+export const CreateLessonBlockDtoKindEnum = {
+    Heading: 'HEADING',
+    Text: 'TEXT',
+    Image: 'IMAGE',
+    Video: 'VIDEO'
+} as const;
+
+export type CreateLessonBlockDtoKindEnum = typeof CreateLessonBlockDtoKindEnum[keyof typeof CreateLessonBlockDtoKindEnum];
+
+/**
+ * 
+ * @export
+ * @interface CreateLessonDto
+ */
+export interface CreateLessonDto {
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateLessonDto
+     */
+    'title': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateLessonDto
+     */
+    'courseId': string;
+    /**
+     * URL slug; defaults to a slugified title
+     * @type {string}
+     * @memberof CreateLessonDto
+     */
+    'slug'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateLessonDto
+     */
+    'description'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateLessonDto
+     */
+    'status'?: CreateLessonDtoStatusEnum;
+    /**
+     * 
+     * @type {number}
+     * @memberof CreateLessonDto
+     */
+    'sortOrder'?: number;
+    /**
+     * 
+     * @type {Array<CreateLessonBlockDto>}
+     * @memberof CreateLessonDto
+     */
+    'blocks'?: Array<CreateLessonBlockDto>;
+}
+
+export const CreateLessonDtoStatusEnum = {
+    Draft: 'DRAFT',
+    Published: 'PUBLISHED'
+} as const;
+
+export type CreateLessonDtoStatusEnum = typeof CreateLessonDtoStatusEnum[keyof typeof CreateLessonDtoStatusEnum];
+
+/**
+ * 
+ * @export
+ * @interface CreatePostDto
+ */
+export interface CreatePostDto {
+    /**
+     * 
+     * @type {string}
+     * @memberof CreatePostDto
+     */
+    'title': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreatePostDto
+     */
+    'slug'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreatePostDto
+     */
+    'excerpt'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreatePostDto
+     */
+    'content': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreatePostDto
+     */
+    'coverImage'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreatePostDto
+     */
+    'status'?: CreatePostDtoStatusEnum;
+    /**
+     * Array of category IDs
+     * @type {Array<string>}
+     * @memberof CreatePostDto
+     */
+    'categoryIds'?: Array<string>;
+}
+
+export const CreatePostDtoStatusEnum = {
+    Draft: 'DRAFT',
+    Published: 'PUBLISHED',
+    Archived: 'ARCHIVED'
+} as const;
+
+export type CreatePostDtoStatusEnum = typeof CreatePostDtoStatusEnum[keyof typeof CreatePostDtoStatusEnum];
+
+/**
+ * 
+ * @export
  * @interface ForgotPasswordDto
  */
 export interface ForgotPasswordDto {
@@ -156,6 +451,222 @@ export interface SetUsernameDto {
      * @memberof SetUsernameDto
      */
     'username': string;
+}
+/**
+ * 
+ * @export
+ * @interface UpdateCategoryDto
+ */
+export interface UpdateCategoryDto {
+    /**
+     * 
+     * @type {string}
+     * @memberof UpdateCategoryDto
+     */
+    'name'?: string;
+    /**
+     * Optional. Auto-generated from name if omitted.
+     * @type {string}
+     * @memberof UpdateCategoryDto
+     */
+    'slug'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof UpdateCategoryDto
+     */
+    'description'?: string;
+}
+/**
+ * 
+ * @export
+ * @interface UpdateCourseDto
+ */
+export interface UpdateCourseDto {
+    /**
+     * 
+     * @type {string}
+     * @memberof UpdateCourseDto
+     */
+    'title'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof UpdateCourseDto
+     */
+    'slug'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof UpdateCourseDto
+     */
+    'description'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof UpdateCourseDto
+     */
+    'coverImage'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof UpdateCourseDto
+     */
+    'status'?: UpdateCourseDtoStatusEnum;
+    /**
+     * 
+     * @type {number}
+     * @memberof UpdateCourseDto
+     */
+    'sortOrder'?: number;
+    /**
+     * CourseCategory id to assign; null clears it
+     * @type {object}
+     * @memberof UpdateCourseDto
+     */
+    'categoryId'?: object;
+}
+
+export const UpdateCourseDtoStatusEnum = {
+    Draft: 'DRAFT',
+    Published: 'PUBLISHED'
+} as const;
+
+export type UpdateCourseDtoStatusEnum = typeof UpdateCourseDtoStatusEnum[keyof typeof UpdateCourseDtoStatusEnum];
+
+/**
+ * 
+ * @export
+ * @interface UpdateLessonDto
+ */
+export interface UpdateLessonDto {
+    /**
+     * 
+     * @type {string}
+     * @memberof UpdateLessonDto
+     */
+    'title'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof UpdateLessonDto
+     */
+    'courseId'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof UpdateLessonDto
+     */
+    'slug'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof UpdateLessonDto
+     */
+    'description'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof UpdateLessonDto
+     */
+    'status'?: UpdateLessonDtoStatusEnum;
+    /**
+     * 
+     * @type {number}
+     * @memberof UpdateLessonDto
+     */
+    'sortOrder'?: number;
+    /**
+     * Replaces all blocks when provided
+     * @type {Array<CreateLessonBlockDto>}
+     * @memberof UpdateLessonDto
+     */
+    'blocks'?: Array<CreateLessonBlockDto>;
+}
+
+export const UpdateLessonDtoStatusEnum = {
+    Draft: 'DRAFT',
+    Published: 'PUBLISHED'
+} as const;
+
+export type UpdateLessonDtoStatusEnum = typeof UpdateLessonDtoStatusEnum[keyof typeof UpdateLessonDtoStatusEnum];
+
+/**
+ * 
+ * @export
+ * @interface UpdatePostDto
+ */
+export interface UpdatePostDto {
+    /**
+     * 
+     * @type {string}
+     * @memberof UpdatePostDto
+     */
+    'title'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof UpdatePostDto
+     */
+    'slug'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof UpdatePostDto
+     */
+    'excerpt'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof UpdatePostDto
+     */
+    'content'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof UpdatePostDto
+     */
+    'coverImage'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof UpdatePostDto
+     */
+    'status'?: UpdatePostDtoStatusEnum;
+    /**
+     * Array of category IDs
+     * @type {Array<string>}
+     * @memberof UpdatePostDto
+     */
+    'categoryIds'?: Array<string>;
+}
+
+export const UpdatePostDtoStatusEnum = {
+    Draft: 'DRAFT',
+    Published: 'PUBLISHED',
+    Archived: 'ARCHIVED'
+} as const;
+
+export type UpdatePostDtoStatusEnum = typeof UpdatePostDtoStatusEnum[keyof typeof UpdatePostDtoStatusEnum];
+
+/**
+ * 
+ * @export
+ * @interface UpdateProfileDto
+ */
+export interface UpdateProfileDto {
+    /**
+     * Full display name
+     * @type {string}
+     * @memberof UpdateProfileDto
+     */
+    'fullName'?: string;
+    /**
+     * Desired username (3-30 chars, letters/numbers/underscores)
+     * @type {string}
+     * @memberof UpdateProfileDto
+     */
+    'username'?: string;
 }
 /**
  * 
@@ -586,6 +1097,46 @@ export const AuthApiAxiosParamCreator = function (configuration?: Configuration)
         },
         /**
          * 
+         * @summary Update the authenticated user profile (name/username)
+         * @param {UpdateProfileDto} updateProfileDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        authControllerUpdateProfileV1: async (updateProfileDto: UpdateProfileDto, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'updateProfileDto' is not null or undefined
+            assertParamExists('authControllerUpdateProfileV1', 'updateProfileDto', updateProfileDto)
+            const localVarPath = `/api/v1/auth/profile`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'PATCH', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication access-token required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(updateProfileDto, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @summary Verify email with the OTP sent at registration
          * @param {VerifyEmailDto} verifyEmailDto 
          * @param {*} [options] Override http request option.
@@ -773,6 +1324,19 @@ export const AuthApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @summary Update the authenticated user profile (name/username)
+         * @param {UpdateProfileDto} updateProfileDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async authControllerUpdateProfileV1(updateProfileDto: UpdateProfileDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.authControllerUpdateProfileV1(updateProfileDto, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['AuthApi.authControllerUpdateProfileV1']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
          * @summary Verify email with the OTP sent at registration
          * @param {VerifyEmailDto} verifyEmailDto 
          * @param {*} [options] Override http request option.
@@ -901,6 +1465,16 @@ export const AuthApiFactory = function (configuration?: Configuration, basePath?
          */
         authControllerSetUsernameV1(setUsernameDto: SetUsernameDto, options?: RawAxiosRequestConfig): AxiosPromise<void> {
             return localVarFp.authControllerSetUsernameV1(setUsernameDto, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Update the authenticated user profile (name/username)
+         * @param {UpdateProfileDto} updateProfileDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        authControllerUpdateProfileV1(updateProfileDto: UpdateProfileDto, options?: RawAxiosRequestConfig): AxiosPromise<void> {
+            return localVarFp.authControllerUpdateProfileV1(updateProfileDto, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -1050,6 +1624,18 @@ export class AuthApi extends BaseAPI {
      */
     public authControllerSetUsernameV1(setUsernameDto: SetUsernameDto, options?: RawAxiosRequestConfig) {
         return AuthApiFp(this.configuration).authControllerSetUsernameV1(setUsernameDto, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Update the authenticated user profile (name/username)
+     * @param {UpdateProfileDto} updateProfileDto 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AuthApi
+     */
+    public authControllerUpdateProfileV1(updateProfileDto: UpdateProfileDto, options?: RawAxiosRequestConfig) {
+        return AuthApiFp(this.configuration).authControllerUpdateProfileV1(updateProfileDto, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
