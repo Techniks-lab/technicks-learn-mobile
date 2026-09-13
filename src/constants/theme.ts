@@ -7,24 +7,38 @@ import '@/global.css';
 
 import { Platform } from 'react-native';
 
+// Technicks Learn brand theme — a dark, energetic tech-learning palette.
+// Deep charcoal + dark teal surfaces, with green as the action colour and
+// amber used sparingly for personality.
+const brandTheme = {
+  text: '#F3F7F5',
+  textSecondary: '#91B0C5',
+  textFaint: '#687F8A',
+  background: '#061415',
+  backgroundElement: '#082526',
+  backgroundSelected: '#123C3E',
+} as const;
+
 export const Colors = {
-  light: {
-    text: '#000000',
-    background: '#ffffff',
-    backgroundElement: '#F0F0F3',
-    backgroundSelected: '#E0E1E6',
-    textSecondary: '#60646C',
-  },
-  dark: {
-    text: '#ffffff',
-    background: '#000000',
-    backgroundElement: '#212225',
-    backgroundSelected: '#2E3135',
-    textSecondary: '#B0B4BA',
-  },
+  light: brandTheme,
+  dark: brandTheme,
 } as const;
 
 export type ThemeColor = keyof typeof Colors.light & keyof typeof Colors.dark;
+
+// Brand accents — shared across modes. Green is the primary/action colour;
+// amber is reserved for emphasis, icons and personality.
+export const Brand = {
+  emerald: '#18C978',
+  brightGreen: '#39E58A',
+  lime: '#A8E84D',
+  amber: '#F5B82E',
+  gold: '#FFD45A',
+  blueGray: '#91B0C5',
+  offWhite: '#F3F7F5',
+  mutedGray: '#687F8A',
+  danger: '#EF4444',
+} as const;
 
 export const Fonts = Platform.select({
   ios: {

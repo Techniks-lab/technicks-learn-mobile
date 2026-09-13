@@ -25,12 +25,15 @@ expo-env.d.ts
 npm-debug.*
 yarn-debug.*
 yarn-error.*
+expo-typegen.log
+*.log
 
 # macOS
 .DS_Store
 *.pem
 
 # local env files
+.env
 .env*.local
 
 # typescript
@@ -41,3 +44,6 @@ example
 # generated native folders
 /ios
 /android
+
+# generated API client
+src/api/generated/
